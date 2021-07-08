@@ -2,3 +2,7 @@
 .docker_build/
 bin/
 vendor/
+ltw-server
+*.old.go
+woto_files/
+labs/
