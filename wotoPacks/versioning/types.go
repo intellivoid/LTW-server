@@ -17,6 +17,8 @@
 
 package versioning
 
+import "ltw-server/wotoPacks/serverErrors"
+
 type Version struct {
 	Num1 uint8
 	Num2 uint8
@@ -25,7 +27,12 @@ type Version struct {
 }
 
 type VersionResp struct {
-	// IsAcceptable will be true if and only if the
+	Success bool                        `json:"success"`
+	Error   *serverErrors.EndPointError `json:"error"`
+	Results *VersionResults             `json:"result"`
+}
+
+type VersionResults struct {
 	IsAcceptable bool `json:"is_acceptable"`
 
 	DataDownloadLink *string `json:"data_download_link"`

@@ -38,6 +38,9 @@ func GetVersionHandler(c *gin.Context) {
 	ver := c.Request.Header.Get(ltwVersionKey)
 	h := c.Request.Header.Get(ltwVersionHashKey)
 	c.JSON(http.StatusOK, &VersionResp{
-		IsAcceptable: VersionAcceptable(ver, h),
+		Success: true,
+		Results: &VersionResults{
+			IsAcceptable: VersionAcceptable(ver, h),
+		},
 	})
 }
