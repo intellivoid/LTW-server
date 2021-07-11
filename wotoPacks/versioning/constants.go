@@ -20,7 +20,7 @@ package versioning
 const (
 	// MaxVersion is the maximum version of the game. if the client's version is
 	// more than this version, it's not acceptable.
-	currentVersion = "1.0.0.0"
+	currentVersion = "2.1.1.5014"
 
 	versionHash = "f302bd7ffacbd295194f86620002b8250e8e9be0233a8055bcebc82c8612843ff9e0f09e42015d5e75581cc93d4c29a91388ed411641b543c8fb7b5a26a2a8b8"
 )
