@@ -41,13 +41,13 @@ operations=0
 if [ -z "$1" ] || [ "$1" == "true" ] || [ "$1" == "1" ];
 then
 	buildApp;
-	$operations++
+	operations=$((i+1))
 fi;
 
 if [ -z "$2" ] || [ "$2" == "true" ] || [ "$2" == "1" ];
 then
 	runApp;
-	$operations++
+	operations=$((i+1))
 fi;
 
 if [ $operations == 0 ]

@@ -20,6 +20,7 @@ package versioning
 import (
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -41,6 +42,7 @@ func GetVersionHandler(c *gin.Context) {
 		Success: true,
 		Results: &VersionResults{
 			IsAcceptable: VersionAcceptable(ver, h),
+			ServerTime:   time.Now().String(),
 		},
 	})
 }

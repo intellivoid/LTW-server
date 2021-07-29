@@ -38,4 +38,6 @@ type VersionResults struct {
 	DataDownloadLink *string `json:"data_download_link"`
 
 	AppDownloadLink *string `json:"app_download_link"`
+
+	ServerTime string `json:"server_time"`
 }
