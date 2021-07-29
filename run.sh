@@ -21,7 +21,7 @@ buildApp()
 	# clear the screen (the terminal)
 	clear
 
-	echo -e "bulding it, please wait a bit..."
+	echo -e "building it, please wait a bit..."
 
 	go build -o ltw-server
 }
