@@ -19,7 +19,9 @@ package versioning
 
 import (
 	"net/http"
+	"strconv"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -38,6 +40,33 @@ func GetVersionHandler(c *gin.Context) {
 	ver := c.Request.Header.Get(ltwVersionKey)
 	h := c.Request.Header.Get(ltwVersionHashKey)
 	c.JSON(http.StatusOK, &VersionResp{
-		IsAcceptable: VersionAcceptable(ver, h),
+		Success: true,
+		Results: &VersionResults{
+			IsAcceptable: VersionAcceptable(ver, h),
+			ServerTime:   GenerateDateTime(),
+		},
 	})
+}
+
+func GenerateDateTime() string {
+	// dd/MM/yyyy HH:mm:ss
+	makeSure := func(i, count int) string {
+		s := strconv.Itoa(i)
+		final := count - len(s)
+		for ; final > 0; final-- {
+			s = "0" + s
+		}
+
+		return s
+	}
+	t := time.Now()
+
+	str := makeSure(t.Day(), 2) + "/"
+	str += makeSure(int(t.Month()), 2) + "/"
+	str += makeSure(t.Year(), 4) + " "
+	str += makeSure(t.Hour(), 2) + ":"
+	str += makeSure(t.Minute(), 2) + ":"
+	str += makeSure(t.Second(), 2)
+
+	return str
 }
